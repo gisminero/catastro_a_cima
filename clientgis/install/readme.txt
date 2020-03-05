@@ -1,4 +1,4 @@
-Hola Eduardo!
+Hola Estimado Usuario!
 0 - Crear la carpeta 'api3' en /opt
 1- Copiar clientgis completa en api3
 2- Darle a todo permisos 777
