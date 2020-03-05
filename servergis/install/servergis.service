@@ -1,0 +1,9 @@
+[Unit]
+Description=Corriendo el SERVERGIS
+
+[Service]
+ExecStart=/bin/sh /opt/api3/ServerGis/servergis/runpythonscript.sh
+Restart=always
+#ExecStart=/bin/sh -c '/bin/python /opt/api3/ServerGis/servergis/servergis.py'
+#Type=oneshot
+#RemainAfterExit=yes
