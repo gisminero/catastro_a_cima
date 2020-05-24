@@ -1,9 +1,13 @@
 [Unit]
-Description=Corriendo el SERVERGIS
+Description=SERVERGIS (Recibe Datos Provinciales)
 
 [Service]
-ExecStart=/bin/sh /opt/api3/ServerGis/servergis/runpythonscript.sh
+ExecStart=/bin/sh /opt/servergis/start.sh
 Restart=always
-#ExecStart=/bin/sh -c '/bin/python /opt/api3/ServerGis/servergis/servergis.py'
-#Type=oneshot
-#RemainAfterExit=yes
+StartLimitIntervalSec=0
+RestartSec=5
+StandardOutput=/var/log/servergis_out.log
+StandardError=/var/log/servergis_error.log
+
+[Install]
+WantedBy=multi-user.target
