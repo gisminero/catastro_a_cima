@@ -2,7 +2,7 @@
 Description=GIS MINERO (Reinicio del Servidor)
 
 [Service]
-ExecStart=/bin/sh /opt/api3/reinicio/start.sh
+ExecStart=/bin/sh /opt/reinicio/start.sh
 Restart=always
 StandardOutput=/var/log/reinicio_out_gis.log
 StandardError=/var/log/reinicio_error_gis.log
