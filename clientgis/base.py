@@ -20,8 +20,6 @@ import ConfigParser
 
 from jsonwsp.client import ServiceConnection
 from reg import reg
-# Conexion a Base de datos de Nacion Original
-#conn = psycopg2.connect(database='Nacion',user='postgres',password='123456', host='localhost')
 
 thisfolder = os.path.dirname(os.path.abspath(__file__))
 initfile = os.path.join(thisfolder, 'config.ini')
@@ -41,9 +39,6 @@ class base(object):
     ipserver = ''
     vpnuse = False
     def __init__(self, logging):
-        ##Publicacion
-        #self.host = config.get('Publicacion', 'host')
-        #self.port = config.get('Publicacion', 'port')
         self.codprov = config.get('Publicacion', 'codprov')
         self.ipserver = str(config.get('Publicacion', 'ipserv'))
         self.vpnuse = config.getboolean('Publicacion', 'vpn')
@@ -54,7 +49,6 @@ class base(object):
         hostDB = config.get('DB', 'hostDB')
         print ("CONECTANDO DB--....")
         self.conn = psycopg2.connect(dbname=nameDB, user=userDB, password=passDB, host=hostDB)
-        #self.conn = psycopg2.connect(dbname='nacion',user='postgres',password='23462', host='localhost')
         try:
             self.cursor = self.conn.cursor()
         except psycopg2.DatabaseError as e:
@@ -167,7 +161,6 @@ class base(object):
     # Selecciona de la Base de Datos de Nacion e Inserta  la Base de Datos de BackUp
     def Save(self):
         x = self.Selecciona()
-        print (("INSERTANDO CATEOR DARIO"))
         for value in x:
             query = """ INSERT INTO public.vacantes("expediente", "nombre", "titular", "mineral", "codprov") VALUES(%s,%s,%s,%s,%s); """
             data = (value['expediente'],value['nombre'],value['titular'],value['mineral'],value['codprov'])
@@ -237,9 +230,6 @@ class base(object):
         jsonData = self.seleccionaPublicacion(table, codprov)
         if jsonData is False:
             return False
-        #print (("ya trajo TODOS LOS DATOS" + str(jsonData)))
-        #serv_ip = '192.168.140.61'#SERVER NACION
-        #serv_ip = '192.168.159.172'
         serv_ip = self.ipserver
         print (("CONECTANDO AL SERVIDOR: " + serv_ip))
         try:
