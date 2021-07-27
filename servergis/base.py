@@ -33,26 +33,12 @@ class base(object):
     cursor = False
     conn = False
     def __init__(self):
-        #config = ConfigParser.ConfigParser()
-        #config.read('config.ini')
-        #nameDB = config.get('DB', 'nameDB')
-        #userDB = config.get('DB', 'userDB')
-        #passDB = config.get('DB', 'passDB')
-        #hostDB = config.get('DB', 'hostDB')
-        #CONEXION CON SERVIDOR
-        nameDB = 'prueba'
-        userDB = 'servergis'
-        passDB = 'q1w2e3r4'
-        hostDB = 'localhost'
-        #"""
-        #CONEXION DESARROLLO
-        #nameDB = 'nacionDB_V1'
-        #userDB = 'postgres'
-        #passDB = '23462'
-        #hostDB = 'localhost'
-        #"""
-        #print ("CONECTANDO/--....")
-        #self.conn = psycopg2.connect(dbname='nacion',user='postgres',password='23462', host='localhost')
+        config = ConfigParser.ConfigParser()
+        config.read('config.ini')
+        nameDB = config.get('DB', 'nameDB')
+        userDB = config.get('DB', 'userDB')
+        passDB = config.get('DB', 'passDB')
+        hostDB = config.get('DB', 'hostDB')
         try:
             self.conn = psycopg2.connect(dbname=nameDB, user=userDB, password=passDB, host=hostDB)
             self.cursor = self.conn.cursor()
@@ -267,8 +253,6 @@ class base(object):
         row = self.cursor.rowcount
         #print "Se Insertaron", row ," registros nuevos en la tabla "+tabla+" ..."
         return True
-
-
 
     def Desconect(self):
         self.conn.commit()
