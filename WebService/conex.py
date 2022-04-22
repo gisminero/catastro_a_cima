@@ -3,7 +3,7 @@ import urllib2
 import json
 
 # Conexion a Base de datos de Nacion Original
-conn = psycopg2.connect(database='nacion',user='postgres',password='23462', host='localhost')
+conn = psycopg2.connect(database='datarecep',user='postgres',password='23462', host='localhost')
 cur = conn.cursor()
 
 query = """ UPDATE public.codProv SET como='A' where id='1'; """
