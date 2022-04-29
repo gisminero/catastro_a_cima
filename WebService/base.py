@@ -133,7 +133,8 @@ class base(object):
             #Solicitar conversion
             poligGeo = self._convMultiGeog(cordenadas_multipo)
             codProv = "1"
-            tabla = diccTabla[tipo]
+            #tabla = diccTabla[tipo]
+            tabla = diccTabla.get(tipo, '')
             if tabla != '':
                 print (("CARGANDO EXPTE " +expediente + " TIPO ORIGINAL: "+ tipo+ " TIPO TRANSFORMADO: " +tabla))
                 query = """ INSERT INTO public."""+tabla+""" ("geom", "expediente", "nombre", "titular", "mineral", "codprov", "estado_legal")
@@ -144,7 +145,7 @@ class base(object):
         query1 = """ SELECT "expediente", "nombre", "titular", "mineral", "codprov" FROM public."""+tabla+"""; """
         self.cursor.execute(query1)
         row = self.cursor.rowcount
-        print "Se Insertaron", row ," registros nuevos en la tabla "+tabla+" ..."
+        print (("Se Insertaron" + row + " registros nuevos en la tabla " + tabla + " ..."))
         return True
 
         ########CLIENTE WEB SERVICE -- CASO "B" ################
@@ -191,7 +192,7 @@ class base(object):
         query1 = """ SELECT "expediente","nombre","titular","mineral","codprov" FROM public.vacantes; """
         x = self.cursor.execute(query1)
         c = self.cursor.rowcount
-        print ("Numero de Row Seleccionados: ", c)
+        print (("Numero de Row Seleccionados: " + c))
         row = self.cursor.fetchone()
         columns = [column[0] for column in cur.description]
         results = []

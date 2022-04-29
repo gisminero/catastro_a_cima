@@ -108,7 +108,7 @@ class base(object):
             self.cursor.execute(queryDelete)
             self.conn.commit()
             rows_deleted = self.cursor.rowcount
-            print "Se eliminaron ", rows_deleted, " registros de la Base de la tabla: "+tabla
+            print (("Se eliminaron " + rows_deleted + " registros de la Base de la tabla: " + tabla))
         except Exception as e:
             raise
 
@@ -135,7 +135,7 @@ class base(object):
         query1 = """ SELECT "expediente", "nombre", "titular", "mineral", "codprov" FROM public."""+tabla+"""; """
         self.cursor.execute(query1)
         row = self.cursor.rowcount
-        print "Se Insertaron", row ," registros nuevos en la tabla "+tabla+" ..."
+        print (("Se Insertaron" + row + " registros nuevos en la tabla " + tabla + " ..."))
         return True
 
         ########CLIENTE WEB SERVICE -- CASO "B" ################
@@ -173,7 +173,7 @@ class base(object):
         query1 = """ SELECT "expediente","nombre","titular","mineral","codprov" FROM public.vacantes; """
         x = self.cursor.execute(query1)
         c = self.cursor.rowcount
-        print ("Numero de Row Seleccionados: ", c)
+        print (("Numero de Row Seleccionados: " + c))
         row = self.cursor.fetchone()
         columns = [column[0] for column in cur.description]
         results = []
