@@ -2,7 +2,7 @@
 Description=CLIENTGIS (Envia datos al Servidor CAT MINERO)
 
 [Service]
-ExecStart=/bin/sh /opt/api3/clientgis/start.sh
+ExecStart=/bin/sh /opt/api3/clientgis/inicio_env.sh
 Restart=always
 StandardOutput=/var/log/clientgis_out.log
 StandardError=/var/log/clientgis_error.log

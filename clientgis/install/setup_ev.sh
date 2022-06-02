@@ -22,3 +22,14 @@ python -m pip install geojson
 python -m pip install Tkinter
 apt-get install python-tk
 source env/bin/deactivate
+#Instalación de inicios automàticos
+sudo cp reinicio.service /etc/systemd/system -y
+sudo chmod 777 /etc/systemd/system/reinicio.service -y
+sudo chmod +x /etc/systemd/system/reinicio.service -y
+sudo cd /opt/api3 -y
+sudo chmod -R 777 clientgis -y
+sudo cd clientgis -y
+sudo chmod +x start.sh -y
+sudo chmod +x main.py -y
+sudo chmod +x /ssh/check.sh -y
+
