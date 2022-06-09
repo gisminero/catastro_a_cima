@@ -1,11 +1,12 @@
 cd /opt
+sudo apt install python2
 #INSTALAR EL ENTORNO VIRTUAL
 sudo apt-get install virtualenv #python-virtualenv
 virtualenv ~/.virtualenvs
 #ACTIVAR EL entorno virtual antes de instalar las librerias
 cd /opt
 cd ~/.virtualenvs
-source env/bin/activate
+source bin/activate
 #COMENZAR a instalar las librerias en el entorno virtual
 python -m pip install timer
 python -m pip install logging
